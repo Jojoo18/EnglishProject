@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vocabulary - English Class</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+      :root {
+        --primary-color: #16a085;
+        --secondary-color: #2c3e50;
+        --accent-color: #e74c3c;
+        --light-bg: #f9f9f9;
+        --card-bg: #ffffff;
+      }
+
+      body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: var(--light-bg);
+        margin: 0;
+        padding: 0;
+        color: var(--secondary-color);
+        line-height: 1.6;
+      }
+
+      header {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 30px 20px;
+        text-align: center;
+        position: relative;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .header-content {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 30px auto;
+        padding: 20px;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 2.5rem;
+      }
+
+      h2 {
+        color: var(--secondary-color);
+        margin-top: 0;
+        padding-bottom: 10px;
+        border-bottom: 2px solid var(--primary-color);
+        display: flex;
+        align-items: center;
+      }
+
+      h2 i {
+        margin-right: 10px;
+        color: var(--primary-color);
+      }
+
+      .category-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        gap: 25px;
+        margin-top: 20px;
+      }
+
+      .category-card {
+        background: var(--card-bg);
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .category-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+      }
+
+      .word-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      .word-item {
+        background: rgba(22, 160, 133, 0.1);
+        padding: 8px 12px;
+        border-radius: 20px;
+        text-align: center;
+        font-size: 0.9rem;
+        transition: all 0.2s ease;
+      }
+
+      .word-item:hover {
+        background: rgba(22, 160, 133, 0.2);
+        transform: scale(1.05);
+      }
+
+      .search-container {
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: center;
+      }
+
+      #searchInput {
+        width: 100%;
+        max-width: 600px;
+        padding: 12px 20px;
+        border: 2px solid #ddd;
+        border-radius: 30px;
+        font-size: 1rem;
+        outline: none;
+        transition: all 0.3s ease;
+      }
+
+      #searchInput:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(22, 160, 133, 0.2);
+      }
+
+      .nav-button {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 12px 25px;
+        border-radius: 30px;
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 20px;
+        transition: all 0.3s ease;
+        border: 2px solid var(--primary-color);
+      }
+
+      .nav-button:hover {
+        background-color: transparent;
+        color: var(--primary-color);
+        text-decoration: none;
+        transform: translateY(-2px);
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 50px;
+        padding: 20px;
+        color: #777;
+        font-size: 0.9rem;
+      }
+
+      .hidden {
+        display: none;
+      }
+
+      @media (max-width: 768px) {
+        .category-grid {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .word-list {
+          grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-content">
+        <h1>English Vocabulary Builder</h1>
+        <p>Expand your vocabulary with categorized word lists and interactive learning</p>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="search-container">
+        <input type="text" id="searchInput" placeholder="Search for words or categories..." aria-label="Search vocabulary" />
+      </div>
+
+      <div class="category-grid">
+        <div class="category-card">
+          <h2><i class="fas fa-sun"></i> Daily Activities</h2>
+          <div class="word-list">
+            <div class="word-item">Wake up</div>
+            <div class="word-item">Take a shower</div>
+            <div class="word-item">Brush teeth</div>
+            <div class="word-item">Eat breakfast</div>
+            <div class="word-item">Go to work</div>
+            <div class="word-item">Commute</div>
+            <div class="word-item">Cook dinner</div>
+            <div class="word-item">Watch TV</div>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <h2><i class="fas fa-utensils"></i> Food & Drink</h2>
+          <div class="word-list">
+            <div class="word-item">Bread</div>
+            <div class="word-item">Rice</div>
+            <div class="word-item">Chicken</div>
+            <div class="word-item">Vegetables</div>
+            <div class="word-item">Juice</div>
+            <div class="word-item">Pasta</div>
+            <div class="word-item">Dessert</div>
+            <div class="word-item">Beverage</div>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <h2><i class="fas fa-smile"></i> Emotions</h2>
+          <div class="word-list">
+            <div class="word-item">Happy</div>
+            <div class="word-item">Sad</div>
+            <div class="word-item">Excited</div>
+            <div class="word-item">Angry</div>
+            <div class="word-item">Nervous</div>
+            <div class="word-item">Confident</div>
+            <div class="word-item">Frustrated</div>
+            <div class="word-item">Grateful</div>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <h2><i class="fas fa-graduation-cap"></i> School & Education</h2>
+          <div class="word-list">
+            <div class="word-item">Teacher</div>
+            <div class="word-item">Student</div>
+            <div class="word-item">Classroom</div>
+            <div class="word-item">Homework</div>
+            <div class="word-item">Exam</div>
+            <div class="word-item">Lecture</div>
+            <div class="word-item">Assignment</div>
+            <div class="word-item">Graduation</div>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <h2><i class="fas fa-tree"></i> Nature & Environment</h2>
+          <div class="word-list">
+            <div class="word-item">Tree</div>
+            <div class="word-item">River</div>
+            <div class="word-item">Mountain</div>
+            <div class="word-item">Ocean</div>
+            <div class="word-item">Rain</div>
+            <div class="word-item">Wildlife</div>
+            <div class="word-item">Ecosystem</div>
+            <div class="word-item">Climate</div>
+          </div>
+        </div>
+
+        <div class="category-card">
+          <h2><i class="fas fa-briefcase"></i> Workplace</h2>
+          <div class="word-list">
+            <div class="word-item">Colleague</div>
+            <div class="word-item">Meeting</div>
+            <div class="word-item">Deadline</div>
+            <div class="word-item">Promotion</div>
+            <div class="word-item">Salary</div>
+            <div class="word-item">Presentation</div>
+            <div class="word-item">Resume</div>
+            <div class="word-item">Interview</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center">
+        <a href="index.html" class="nav-button"> <i class="fas fa-arrow-left"></i> Back to Home </a>
+      </div>
+    </div>
+
+    <div class="footer">
+      <p>© 2023 English Vocabulary Builder | Designed for ESL Learners</p>
+    </div>
+
+    <script>
+      // Search functionality
+      document.getElementById('searchInput').addEventListener('input', function () {
+        const searchTerm = this.value.toLowerCase();
+        const wordItems = document.querySelectorAll('.word-item');
+
+        wordItems.forEach((item) => {
+          const word = item.textContent.toLowerCase();
+          if (word.includes(searchTerm)) {
+            item.style.display = 'block';
+            // Highlight matching text
+            item.innerHTML = item.textContent.replace(new RegExp(searchTerm, 'gi'), (match) => `<span style="background-color: #ffeb3b; padding: 2px 0; border-radius: 3px;">${match}</span>`);
+          } else {
+            item.style.display = 'none';
+          }
+        });
+
+        // Show/hide entire category cards based on matches
+        const categoryCards = document.querySelectorAll('.category-card');
+        categoryCards.forEach((card) => {
+          const visibleWords = card.querySelectorAll('.word-item[style="display: block;"]').length;
+          const categoryTitle = card.querySelector('h2').textContent.toLowerCase();
+
+          if (visibleWords > 0 || categoryTitle.includes(searchTerm) || searchTerm.length === 0) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+
+      // Animation on page load
+      document.addEventListener('DOMContentLoaded', () => {
+        const cards = document.querySelectorAll('.category-card');
+        cards.forEach((card, index) => {
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 100 * index);
+        });
+
+        // Set initial state for animation
+        cards.forEach((card) => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+      });
+    </script>
+  </body>
+</html>

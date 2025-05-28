@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tenses - English Class</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <style>
+      :root {
+        --primary: #4361ee;
+        --secondary: #3f37c9;
+        --accent: #4895ef;
+        --light: #f8f9fa;
+        --dark: #212529;
+        --success: #4cc9f0;
+        --warning: #f72585;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        margin: 0;
+        padding: 0;
+        color: var(--dark);
+        line-height: 1.6;
+      }
+
+      header {
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        color: white;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      header::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--accent);
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        font-weight: 700;
+        animation: fadeIn 1s ease;
+      }
+
+      header p {
+        margin: 0.5rem 0 0;
+        font-size: 1.1rem;
+        opacity: 0.9;
+        animation: fadeIn 1.5s ease;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      h2 {
+        color: var(--secondary);
+        margin-top: 2rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--accent);
+        position: relative;
+      }
+
+      h2::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background: var(--warning);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+      }
+
+      table:hover {
+        transform: translateY(-5px);
+      }
+
+      th,
+      td {
+        border: 1px solid #e0e0e0;
+        padding: 1rem;
+        text-align: left;
+      }
+
+      th {
+        background-color: var(--primary);
+        color: white;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.85rem;
+        letter-spacing: 0.5px;
+      }
+
+      tr:nth-child(even) {
+        background-color: #f8f9fa;
+      }
+
+      tr:hover {
+        background-color: #e9ecef;
+        transition: background-color 0.2s ease;
+      }
+
+      .btn {
+        display: inline-block;
+        background: var(--primary);
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        margin-top: 1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        border: none;
+        cursor: pointer;
+      }
+
+      .btn:hover {
+        background: var(--secondary);
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        text-decoration: none;
+      }
+
+      .btn i {
+        margin-right: 8px;
+      }
+
+      .quiz-section {
+        margin-top: 3rem;
+        padding: 2rem;
+        background: linear-gradient(to right, #f8f9fa, #e9ecef);
+        border-radius: 10px;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+      }
+
+      .quiz-question {
+        margin-bottom: 1.5rem;
+        padding: 1rem;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding: 1rem;
+        color: #6c757d;
+        font-size: 0.9rem;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive design */
+      @media (max-width: 768px) {
+        .container {
+          padding: 1rem;
+          margin: 1rem;
+        }
+
+        header h1 {
+          font-size: 2rem;
+        }
+
+        table {
+          font-size: 0.9rem;
+        }
+
+        th,
+        td {
+          padding: 0.8rem;
+        }
+      }
+
+      /* Toggle switch for dark mode */
+      .dark-mode-toggle {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        z-index: 100;
+      }
+
+      .toggle-btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .toggle-btn:hover {
+        transform: scale(1.1);
+      }
+
+      /* Dark mode styles */
+      body.dark-mode {
+        background: linear-gradient(135deg, #2b2d42 0%, #1a1a2e 100%);
+        color: #f8f9fa;
+      }
+
+      body.dark-mode .container {
+        background: #343a40;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      body.dark-mode table {
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      body.dark-mode th {
+        background-color: #495057;
+      }
+
+      body.dark-mode tr:nth-child(even) {
+        background-color: #495057;
+        color: white;
+      }
+
+      body.dark-mode tr:hover {
+        background-color: #6c757d;
+      }
+
+      body.dark-mode td {
+        border-color: #6c757d;
+      }
+
+      body.dark-mode .quiz-section {
+        background: linear-gradient(to right, #495057, #343a40);
+      }
+
+      body.dark-mode .quiz-question {
+        background: #495057;
+        color: white;
+      }
+
+      body.dark-mode h2 {
+        color: var(--accent);
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Tenses Mastery - English Class</h1>
+      <p>Comprehensive guide to English tenses with interactive examples</p>
+    </header>
+
+    <div class="container">
+      <h2><i class="fas fa-clock"></i> Present Tenses</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tense</th>
+            <th>Usage</th>
+            <th>Example</th>
+            <th>Signal Words</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Simple Present</strong></td>
+            <td>General truths, habits, routines</td>
+            <td>She reads every day.</td>
+            <td>always, often, usually, every day</td>
+          </tr>
+          <tr>
+            <td><strong>Present Continuous</strong></td>
+            <td>Actions happening now, temporary actions, future arrangements</td>
+            <td>She is reading a book now.</td>
+            <td>now, at the moment, currently, today</td>
+          </tr>
+          <tr>
+            <td><strong>Present Perfect</strong></td>
+            <td>Actions that occurred at an unspecified time, experiences, changes over time</td>
+            <td>She has read that book.</td>
+            <td>already, yet, ever, never, just</td>
+          </tr>
+          <tr>
+            <td><strong>Present Perfect Continuous</strong></td>
+            <td>Actions that started in the past and continue, emphasis on duration</td>
+            <td>She has been reading for two hours.</td>
+            <td>for, since, how long, all day</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2><i class="fas fa-history"></i> Past Tenses</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tense</th>
+            <th>Usage</th>
+            <th>Example</th>
+            <th>Signal Words</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Simple Past</strong></td>
+            <td>Completed actions in the past at a specific time</td>
+            <td>She read a book yesterday.</td>
+            <td>yesterday, last week, in 2010, ago</td>
+          </tr>
+          <tr>
+            <td><strong>Past Continuous</strong></td>
+            <td>Ongoing action in the past, interrupted actions</td>
+            <td>She was reading when I called.</td>
+            <td>while, when, as</td>
+          </tr>
+          <tr>
+            <td><strong>Past Perfect</strong></td>
+            <td>Action completed before another past action</td>
+            <td>She had read the book before dinner.</td>
+            <td>already, just, never, before, after</td>
+          </tr>
+          <tr>
+            <td><strong>Past Perfect Continuous</strong></td>
+            <td>Duration before another past action, cause of something in the past</td>
+            <td>She had been reading for an hour when he arrived.</td>
+            <td>for, since, how long</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2><i class="fas fa-rocket"></i> Future Tenses</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Tense</th>
+            <th>Usage</th>
+            <th>Example</th>
+            <th>Signal Words</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Simple Future</strong></td>
+            <td>Predictions, spontaneous decisions, promises</td>
+            <td>She will read the book tomorrow.</td>
+            <td>tomorrow, next week, in 2025</td>
+          </tr>
+          <tr>
+            <td><strong>Future Continuous</strong></td>
+            <td>Ongoing action in the future, polite inquiries</td>
+            <td>She will be reading at 8 PM.</td>
+            <td>at this time tomorrow, at 8 PM</td>
+          </tr>
+          <tr>
+            <td><strong>Future Perfect</strong></td>
+            <td>Action completed before a future time</td>
+            <td>She will have read the book by Friday.</td>
+            <td>by, by the time, before</td>
+          </tr>
+          <tr>
+            <td><strong>Future Perfect Continuous</strong></td>
+            <td>Duration before a specific time in the future</td>
+            <td>She will have been reading for two hours by then.</td>
+            <td>for, by the time</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="quiz-section">
+        <h2><i class="fas fa-question-circle"></i> Quick Quiz</h2>
+        <div class="quiz-question">
+          <p><strong>1. Which tense would you use for this sentence: "I ___ (work) here since 2010."?</strong></p>
+          <button class="btn" onclick="checkAnswer(1, 'present-perfect')">Present Perfect</button>
+          <button class="btn" onclick="checkAnswer(1, 'present-continuous')">Present Continuous</button>
+          <button class="btn" onclick="checkAnswer(1, 'simple-present')">Simple Present</button>
+          <p id="feedback-1" style="display: none; color: var(--success); font-weight: bold"></p>
+        </div>
+
+        <div class="quiz-question">
+          <p><strong>2. Choose the correct form: "By next year, I ___ (study) English for five years."</strong></p>
+          <button class="btn" onclick="checkAnswer(2, 'future-perfect-continuous')">will have been studying</button>
+          <button class="btn" onclick="checkAnswer(2, 'future-continuous')">will be studying</button>
+          <button class="btn" onclick="checkAnswer(2, 'future-perfect')">will have studied</button>
+          <p id="feedback-2" style="display: none; color: var(--success); font-weight: bold"></p>
+        </div>
+      </div>
+
+      <a href="index.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+
+    <div class="dark-mode-toggle">
+      <button class="toggle-btn" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+
+    <div class="footer">
+      <p>© 2023 English Mastery | Created with <i class="fas fa-heart" style="color: var(--warning)"></i> for language learners</p>
+    </div>
+
+    <script>
+      function checkAnswer(questionNum, selectedAnswer) {
+        const correctAnswers = {
+          1: 'present-perfect',
+          2: 'future-perfect-continuous',
+        };
+
+        const feedbackElement = document.getElementById(`feedback-${questionNum}`);
+
+        if (selectedAnswer === correctAnswers[questionNum]) {
+          feedbackElement.textContent = '✓ Correct! Well done!';
+          feedbackElement.style.color = '#4CAF50';
+        } else {
+          feedbackElement.textContent = '✗ Not quite right. Try again!';
+          feedbackElement.style.color = '#F44336';
+        }
+
+        feedbackElement.style.display = 'block';
+      }
+
+      function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        const toggleBtn = document.querySelector('.toggle-btn');
+
+        if (document.body.classList.contains('dark-mode')) {
+          toggleBtn.innerHTML = '<i class="fas fa-sun"></i>';
+          toggleBtn.style.background = '#f8f9fa';
+          toggleBtn.style.color = '#212529';
+        } else {
+          toggleBtn.innerHTML = '<i class="fas fa-moon"></i>';
+          toggleBtn.style.background = 'var(--primary)';
+          toggleBtn.style.color = 'white';
+        }
+      }
+
+      // Add animation to table rows
+      document.addEventListener('DOMContentLoaded', function () {
+        const rows = document.querySelectorAll('tr');
+        rows.forEach((row, index) => {
+          row.style.opacity = '0';
+          row.style.transform = 'translateY(20px)';
+          row.style.transition = `all 0.3s ease ${index * 0.1}s`;
+
+          setTimeout(() => {
+            row.style.opacity = '1';
+            row.style.transform = 'translateY(0)';
+          }, 100);
+        });
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>English Mastery - Practice Exercises</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --primary-color: #3498db;
+        --secondary-color: #2c3e50;
+        --success-color: #2ecc71;
+        --danger-color: #e74c3c;
+        --warning-color: #f39c12;
+        --light-bg: #f5f7fa;
+        --card-bg: #ffffff;
+        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        --transition: all 0.3s ease;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--light-bg);
+        margin: 0;
+        padding: 0;
+        color: var(--secondary-color);
+        line-height: 1.6;
+      }
+
+      header {
+        background: linear-gradient(135deg, var(--primary-color), #2980b9);
+        color: white;
+        text-align: center;
+        padding: 50px 20px;
+        box-shadow: var(--shadow);
+        position: relative;
+        overflow: hidden;
+      }
+
+      header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url('https://images.unsplash.com/photo-1546410531-bb4caa6b424d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
+        opacity: 0.1;
+        z-index: 0;
+      }
+
+      .header-content {
+        max-width: 900px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 1;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 40px auto;
+        background-color: var(--card-bg);
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: var(--shadow);
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 2.8rem;
+        font-weight: 700;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        margin-top: 10px;
+        opacity: 0.9;
+      }
+
+      h2 {
+        color: var(--secondary-color);
+        margin-top: 0;
+        padding-bottom: 8px;
+        border-bottom: 2px solid var(--primary-color);
+        display: flex;
+        align-items: center;
+        font-weight: 600;
+      }
+
+      h2 i {
+        margin-right: 12px;
+        color: var(--primary-color);
+        font-size: 1.4rem;
+      }
+
+      .exercise-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 25px;
+        margin-top: 30px;
+      }
+
+      .exercise {
+        padding: 25px;
+        border-radius: 12px;
+        background-color: var(--card-bg);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+        border-left: 4px solid var(--primary-color);
+        position: relative;
+      }
+
+      .exercise:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .exercise-number {
+        position: absolute;
+        top: -15px;
+        left: 20px;
+        background-color: var(--primary-color);
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        box-shadow: var(--shadow);
+      }
+
+      .exercise-content {
+        margin-top: 10px;
+      }
+
+      .exercise p {
+        margin-bottom: 15px;
+        font-size: 1.1rem;
+      }
+
+      .exercise input[type='text'],
+      .exercise select {
+        width: 100%;
+        padding: 12px 15px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 1rem;
+        transition: var(--transition);
+        margin-bottom: 10px;
+      }
+
+      .exercise input[type='text']:focus,
+      .exercise select:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+        outline: none;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 28px;
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: var(--transition);
+        text-decoration: none;
+        border: none;
+        box-shadow: var(--shadow);
+      }
+
+      .btn i {
+        margin-right: 10px;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: #2980b9;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .btn-success {
+        background-color: var(--success-color);
+        color: white;
+      }
+
+      .btn-success:hover {
+        background-color: #27ae60;
+        transform: translateY(-3px);
+      }
+
+      .btn-secondary {
+        background-color: transparent;
+        color: var(--primary-color);
+        border: 2px solid var(--primary-color);
+      }
+
+      .btn-secondary:hover {
+        background-color: rgba(52, 152, 219, 0.1);
+        transform: translateY(-3px);
+      }
+
+      .button-group {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 40px;
+        flex-wrap: wrap;
+        gap: 15px;
+      }
+
+      .progress-container {
+        margin-bottom: 30px;
+        background-color: #eee;
+        border-radius: 10px;
+        height: 12px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .progress-bar {
+        height: 100%;
+        border-radius: 10px;
+        background: linear-gradient(90deg, var(--primary-color), #2ecc71);
+        width: 0%;
+        transition: width 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+      }
+
+      .progress-text {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 0.8rem;
+        color: var(--secondary-color);
+      }
+
+      .feedback {
+        margin-top: 15px;
+        padding: 15px;
+        border-radius: 8px;
+        display: none;
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .correct {
+        background-color: rgba(46, 204, 113, 0.15);
+        border-left: 4px solid var(--success-color);
+        color: var(--success-color);
+      }
+
+      .incorrect {
+        background-color: rgba(231, 76, 60, 0.15);
+        border-left: 4px solid var(--danger-color);
+        color: var(--danger-color);
+      }
+
+      .hint {
+        margin-top: 10px;
+        font-size: 0.95rem;
+        color: #666;
+        display: none;
+        padding: 10px;
+        background-color: rgba(243, 156, 18, 0.1);
+        border-left: 4px solid var(--warning-color);
+        border-radius: 0 5px 5px 0;
+      }
+
+      .hint-btn {
+        background: none;
+        border: none;
+        color: var(--warning-color);
+        cursor: pointer;
+        font-size: 0.95rem;
+        padding: 0;
+        margin-top: 5px;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+      }
+
+      .hint-btn i {
+        margin-right: 5px;
+      }
+
+      .score-display {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        display: none;
+      }
+
+      .exercise-image {
+        width: 100%;
+        max-height: 200px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        box-shadow: var(--shadow);
+      }
+
+      .multiple-choice {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 10px;
+        margin-top: 10px;
+      }
+
+      .choice-option {
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        text-align: center;
+        cursor: pointer;
+        transition: var(--transition);
+      }
+
+      .choice-option:hover {
+        background-color: rgba(52, 152, 219, 0.1);
+        border-color: var(--primary-color);
+      }
+
+      .choice-option.selected {
+        background-color: var(--primary-color);
+        color: white;
+        border-color: var(--primary-color);
+      }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: 25px;
+          margin: 20px;
+        }
+
+        h1 {
+          font-size: 2.2rem;
+        }
+
+        .button-group {
+          flex-direction: column;
+        }
+
+        .btn {
+          width: 100%;
+        }
+
+        .multiple-choice {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <div class="header-content">
+        <h1>English Mastery</h1>
+        <p class="subtitle">Practice and perfect your English skills with interactive exercises</p>
+      </div>
+    </header>
+
+    <div class="container">
+      <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+        <div class="progress-text" id="progressText">0/10</div>
+      </div>
+
+      <div class="score-display" id="scoreDisplay"></div>
+
+      <form id="exerciseForm">
+        <div class="exercise-grid">
+          <!-- Exercise 1 -->
+          <div class="exercise">
+            <div class="exercise-number">1</div>
+            <h2><i class="fas fa-language"></i> Present Simple</h2>
+            <div class="exercise-content">
+              <p>She <input type="text" id="exercise1" placeholder="verb" data-correct="goes" /> to school every morning.</p>
+              <div class="feedback" id="feedback1"></div>
+              <button type="button" class="hint-btn" onclick="showHint(1)"><i class="fas fa-lightbulb"></i> Show Hint</button>
+              <div class="hint" id="hint1">Use the third person singular form of the verb for 'she'.</div>
+            </div>
+          </div>
+
+          <!-- Exercise 2 -->
+          <div class="exercise">
+            <div class="exercise-number">2</div>
+            <h2><i class="fas fa-clock"></i> Past Perfect</h2>
+            <div class="exercise-content">
+              <p>By the time we arrived, the movie <input type="text" id="exercise2" placeholder="verb phrase" data-correct="had already started" />.</p>
+              <div class="feedback" id="feedback2"></div>
+              <button type="button" class="hint-btn" onclick="showHint(2)"><i class="fas fa-lightbulb"></i> Show Hint</button>
+              <div class="hint" id="hint2">This action happened before another past action.</div>
+            </div>
+          </div>
+
+          <!-- Exercise 3 -->
+          <div class="exercise">
+            <div class="exercise-number">3</div>
+            <h2><i class="fas fa-book"></i> Vocabulary</h2>
+            <div class="exercise-content">
+              <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Mountain" class="exercise-image" />
+              <p>What is this geographical feature called? <input type="text" id="exercise3" placeholder="English word" data-correct="mountain" /></p>
+              <div class="feedback" id="feedback3"></div>
+              <button type="button" class="hint-btn" onclick="showHint(3)"><i class="fas fa-lightbulb"></i> Show Hint</button>
+              <div class="hint" id="hint3">It's a large natural elevation of the earth's surface.</div>
+            </div>
+          </div>
+
+          <!-- Exercise 4 -->
+          <div class="exercise">
+            <div class="exercise-number">4</div>
+            <h2><i class="fas fa-random"></i> Sentence Structure</h2>
+            <div class="exercise-content">
+              <p>
+                Rearrange these words to form a correct sentence:
+                <input type="text" id="exercise4" placeholder="complete sentence" data-correct="The quick brown fox jumps over the lazy dog" />
+                (jumps / The / brown / quick / fox / over / lazy / the / dog)
+              </p>
+              <div class="feedback" id="feedback4"></div>
+              <button type="button" class="hint-btn" onclick="showHint(4)"><i class="fas fa-lightbulb"></i> Show Hint</button>
+              <div class="hint" id="hint4">Start with the subject (The + adjectives + noun).</div>
+            </div>
+          </div>
+
+          <!-- Exercise 5 -->
+          <div class="exercise">
+            <div class="exercise-number">5</div>
+            <h2><i class="fas fa-question"></i> Question Formation</h2>
+            <div class="exercise-content">
+              <p>Form a question for this answer: "I've been studying English for 3 years." <input type="text" id="exercise5" placeholder="question" data-correct="How long have you been studying English" /></p>
+              <div class="feedback" id="feedback5"></div>
+              <button type="button" class="hint-btn" onclick="showHint(5)"><i class="fas fa-lightbulb"></i> Show Hint</button>
+              <div class="hint" id="hint5">Focus on the duration (3 years) when forming your question.</div>
+            </div>
+          </div>
+
+          <!-- Exercise 6 -->
+          <div class="exercise">
+            <div class="exercise-number">6</div>
+            <h2><i class="fas fa-list-ul"></i> Multiple Choice</h2>
+            <div class="exercise-content">
+              <p>Choose the correct preposition:</p>
+              <p>"I'm really interested ___ modern art."</p>
+              <div class="multiple-choice" id="exercise6" data-correct="in">
+                <div class="choice-option" data-value="on">on</div>
+                <div class="choice-option" data-value="at">at</div>
+                <div class="choice-option" data-value="in">in</div>
+                <div class="choice-option" data-value="for">for</div>
+              </div>
+              <div class="feedback" id="feedback6"></div>
+            </div>
+          </div>
+
+          <!-- Exercise 7 -->
+          <div class="exercise">
+            <div class="exercise-number">7</div>
+            <h2><i class="fas fa-exchange-alt"></i> Phrasal Verb</h2>
+            <div class="exercise-content">
+              <p>Complete with the correct phrasal verb:</p>
+              <p>"Please ___ the lights when you leave the room." <input type="text" id="exercise7" placeholder="phrasal verb" data-correct="turn off" /></p>
+              <div class="feedback" id="feedback7"></div>
+              <button type="button" class="hint-btn" onclick="showHint(7)"><i class="fas fa-lightbulb"></i> Show Hint</button>
+              <div class="hint" id="hint7">It means to stop something from working by pressing a button.</div>
+            </div>
+          </div>
+
+          <!-- Exercise 8 -->
+          <div class="exercise">
+            <div class="exercise-number">8</div>
+            <h2><i class="fas fa-spell-check"></i> Spelling</h2>
+            <div class="exercise-content">
+              <p>Correct the spelling of this word:</p>
+              <p><input type="text" id="exercise8" placeholder="correct spelling" data-correct="necessary" /> (incorrect: neccessary)</p>
+              <div class="feedback" id="feedback8"></div>
+              <button type="button" class="hint-btn" onclick="showHint(8)"><i class="fas fa-lightbulb"></i> Show Hint</button>
+              <div class="hint" id="hint8">Remember: "One coffee (c) and two sugars (ss)"</div>
+            </div>
+          </div>
+
+          <!-- Exercise 9 -->
+          <div class="exercise">
+            <div class="exercise-number">9</div>
+            <h2><i class="fas fa-comment"></i> Reported Speech</h2>
+            <div class="exercise-content">
+              <p>Convert to reported speech: "I will call you tomorrow," she said.</p>
+              <p>She said that <input type="text" id="exercise9" placeholder="reported speech" data-correct="she would call me the next day" /></p>
+              <div class="feedback" id="feedback9"></div>
+              <button type="button" class="hint-btn" onclick="showHint(9)"><i class="fas fa-lightbulb"></i> Show Hint</button>
+              <div class="hint" id="hint9">Remember to change the tense and time reference.</div>
+            </div>
+          </div>
+
+          <!-- Exercise 10 -->
+          <div class="exercise">
+            <div class="exercise-number">10</div>
+            <h2><i class="fas fa-puzzle-piece"></i> Idiom</h2>
+            <div class="exercise-content">
+              <p>Complete this idiom: "It's raining ___ and dogs." <input type="text" id="exercise10" placeholder="missing word" data-correct="cats" /></p>
+              <div class="feedback" id="feedback10"></div>
+              <button type="button" class="hint-btn" onclick="showHint(10)"><i class="fas fa-lightbulb"></i> Show Hint</button>
+              <div class="hint" id="hint10">This idiom means it's raining very heavily.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="button-group">
+          <button type="submit" class="btn btn-primary"><i class="fas fa-check-circle"></i> Check All Answers</button>
+          <button type="button" class="btn btn-success" id="resetBtn"><i class="fas fa-redo"></i> Try Again</button>
+          <a href="home.html" class="btn btn-secondary"> <i class="fas fa-arrow-left"></i> Back to Home </a>
+        </div>
+      </form>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        // Initialize progress bar
+        updateProgress();
+
+        // Form submission
+        document.getElementById('exerciseForm').addEventListener('submit', function (e) {
+          e.preventDefault();
+          checkAllAnswers();
+        });
+
+        // Reset button
+        document.getElementById('resetBtn').addEventListener('click', resetExercises);
+
+        // Multiple choice selection
+        document.querySelectorAll('.choice-option').forEach((option) => {
+          option.addEventListener('click', function () {
+            const container = this.parentElement;
+            container.querySelectorAll('.choice-option').forEach((opt) => {
+              opt.classList.remove('selected');
+            });
+            this.classList.add('selected');
+            updateProgress();
+          });
+        });
+
+        // Input focus effects
+        document.querySelectorAll('input[type="text"]').forEach((input) => {
+          input.addEventListener('input', updateProgress);
+
+          input.addEventListener('focus', function () {
+            this.parentElement.parentElement.parentElement.style.borderLeftColor = 'var(--success-color)';
+          });
+
+          input.addEventListener('blur', function () {
+            this.parentElement.parentElement.parentElement.style.borderLeftColor = 'var(--primary-color)';
+          });
+        });
+      });
+
+      function checkAllAnswers() {
+        let score = 0;
+        const totalExercises = 10;
+
+        // Check each exercise
+        for (let i = 1; i <= totalExercises; i++) {
+          const isCorrect = checkAnswer(i);
+          if (isCorrect) score++;
+        }
+
+        // Display score
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        scoreDisplay.textContent = `Your score: ${score}/${totalExercises} (${Math.round((score / totalExercises) * 100)}%)`;
+        scoreDisplay.style.display = 'block';
+        scoreDisplay.style.color = score === totalExercises ? 'var(--success-color)' : score >= totalExercises / 2 ? 'var(--primary-color)' : 'var(--danger-color)';
+
+        // Scroll to top to see score
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      function checkAnswer(exerciseNum) {
+        const exercise = document.getElementById(`exercise${exerciseNum}`);
+        const feedback = document.getElementById(`feedback${exerciseNum}`);
+
+        let userAnswer, correctAnswer;
+
+        if (exercise.classList.contains('multiple-choice')) {
+          // Handle multiple choice
+          const selected = exercise.querySelector('.selected');
+          userAnswer = selected ? selected.dataset.value : '';
+          correctAnswer = exercise.dataset.correct;
+        } else {
+          // Handle text input
+          userAnswer = exercise.value.trim().toLowerCase();
+          correctAnswer = exercise.dataset.correct.toLowerCase();
+        }
+
+        if (userAnswer === correctAnswer) {
+          feedback.textContent = '✓ Correct! Well done.';
+          feedback.className = 'feedback correct';
+          feedback.style.display = 'block';
+          return true;
+        } else {
+          feedback.textContent = `✗ Incorrect. The correct answer is: "${correctAnswer}".`;
+          feedback.className = 'feedback incorrect';
+          feedback.style.display = 'block';
+          return false;
+        }
+      }
+
+      function showHint(exerciseNum) {
+        const hint = document.getElementById(`hint${exerciseNum}`);
+        hint.style.display = hint.style.display === 'block' ? 'none' : 'block';
+      }
+
+      function updateProgress() {
+        let answered = 0;
+        const totalExercises = 10;
+
+        // Count text inputs with values
+        answered += Array.from(document.querySelectorAll('input[type="text"]')).filter((input) => input.value.trim() !== '').length;
+
+        // Count selected multiple choice options
+        answered += document.querySelectorAll('.choice-option.selected').length;
+
+        // Update progress bar
+        const progressPercentage = (answered / totalExercises) * 100;
+        document.getElementById('progressBar').style.width = `${progressPercentage}%`;
+        document.getElementById('progressText').textContent = `${answered}/${totalExercises}`;
+      }
+
+      function resetExercises() {
+        // Clear all inputs
+        document.querySelectorAll('input[type="text"]').forEach((input) => {
+          input.value = '';
+        });
+
+        // Clear multiple choice selections
+        document.querySelectorAll('.choice-option').forEach((option) => {
+          option.classList.remove('selected');
+        });
+
+        // Hide all feedback and hints
+        document.querySelectorAll('.feedback, .hint').forEach((el) => {
+          el.style.display = 'none';
+        });
+
+        // Hide score display
+        document.getElementById('scoreDisplay').style.display = 'none';
+
+        // Reset progress
+        updateProgress();
+      }
+    </script>
+  </body>
+</html>

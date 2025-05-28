@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grammar Mastery - English Class</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --primary: #4361ee;
+        --primary-dark: #3a0ca3;
+        --secondary: #4895ef;
+        --accent: #4cc9f0;
+        --light: #f8f9fa;
+        --dark: #212529;
+        --success: #38b000;
+        --warning: #f72585;
+        --card-bg: #ffffff;
+        --text-color: #333333;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+        margin: 0;
+        padding: 0;
+        color: var(--text-color);
+        line-height: 1.7;
+      }
+
+      body.dark-mode {
+        --card-bg: #343a40;
+        --text-color: #f8f9fa;
+        background: linear-gradient(135deg, #2b2d42 0%, #1a1a2e 100%);
+      }
+
+      header {
+        background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 5px;
+        background: var(--accent);
+      }
+
+      header h1 {
+        margin: 0;
+        font-size: 2.8rem;
+        font-weight: 700;
+        animation: fadeInDown 1s ease;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      header p {
+        font-size: 1.3rem;
+        opacity: 0.9;
+        margin: 1rem auto 0;
+        max-width: 800px;
+        animation: fadeIn 1.5s ease;
+        font-weight: 300;
+      }
+
+      .container {
+        max-width: 1000px;
+        margin: 2rem auto;
+        padding: 2rem;
+        background: var(--card-bg);
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      }
+
+      h2 {
+        color: var(--primary);
+        margin-top: 2.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid var(--accent);
+        position: relative;
+      }
+
+      h2::after {
+        content: '';
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background: var(--warning);
+      }
+
+      .grammar-card {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin: 1.5rem 0;
+        border-left: 4px solid var(--accent);
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      }
+
+      body.dark-mode .grammar-card {
+        background: rgba(0, 0, 0, 0.1);
+      }
+
+      .grammar-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .grammar-card h3 {
+        color: var(--secondary);
+        margin-top: 0;
+        display: flex;
+        align-items: center;
+      }
+
+      .grammar-card h3 i {
+        margin-right: 10px;
+        color: var(--accent);
+      }
+
+      ul,
+      ol {
+        margin-left: 1.5rem;
+        padding-left: 1rem;
+      }
+
+      li {
+        margin-bottom: 0.8rem;
+        position: relative;
+      }
+
+      li::before {
+        content: '•';
+        color: var(--accent);
+        font-weight: bold;
+        display: inline-block;
+        width: 1em;
+        margin-left: -1em;
+        position: absolute;
+        left: 0;
+      }
+
+      strong {
+        color: var(--secondary);
+      }
+
+      .example-box {
+        background: rgba(72, 149, 239, 0.1);
+        border-radius: 8px;
+        padding: 1rem;
+        margin: 1rem 0;
+        border-left: 3px solid var(--secondary);
+      }
+
+      body.dark-mode .example-box {
+        background: rgba(72, 149, 239, 0.2);
+      }
+
+      .example-box p {
+        margin: 0.5rem 0;
+        font-style: italic;
+      }
+
+      .example-box .label {
+        font-weight: 600;
+        color: var(--primary);
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        background: linear-gradient(to right, var(--primary), var(--secondary));
+        color: white;
+        padding: 0.8rem 1.8rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        margin-top: 1rem;
+      }
+
+      .btn i {
+        margin-right: 8px;
+      }
+
+      .btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(67, 97, 238, 0.4);
+        text-decoration: none;
+      }
+
+      .interactive-quiz {
+        background: linear-gradient(to right, #f8f9fa, #e9ecef);
+        border-radius: 10px;
+        padding: 2rem;
+        margin: 2rem 0;
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+      }
+
+      body.dark-mode .interactive-quiz {
+        background: linear-gradient(to right, #495057, #343a40);
+      }
+
+      .quiz-question {
+        background: var(--card-bg);
+        border-radius: 8px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+
+      .quiz-option {
+        display: block;
+        margin: 0.8rem 0;
+        padding: 0.8rem;
+        border-radius: 5px;
+        background: rgba(0, 0, 0, 0.03);
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      body.dark-mode .quiz-option {
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .quiz-option:hover {
+        background: rgba(72, 149, 239, 0.1);
+      }
+
+      .quiz-option.correct {
+        background: rgba(56, 176, 0, 0.2);
+        border-left: 3px solid var(--success);
+      }
+
+      .quiz-option.incorrect {
+        background: rgba(247, 37, 133, 0.1);
+        border-left: 3px solid var(--warning);
+      }
+
+      .feedback {
+        margin-top: 1rem;
+        padding: 0.8rem;
+        border-radius: 5px;
+        display: none;
+      }
+
+      .feedback.correct {
+        background: rgba(56, 176, 0, 0.1);
+        color: var(--success);
+        display: block;
+      }
+
+      .feedback.incorrect {
+        background: rgba(247, 37, 133, 0.1);
+        color: var(--warning);
+        display: block;
+      }
+
+      .dark-mode-toggle {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 99;
+      }
+
+      .toggle-btn {
+        background: var(--primary);
+        color: white;
+        border: none;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .toggle-btn:hover {
+        transform: scale(1.1);
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 768px) {
+        header h1 {
+          font-size: 2rem;
+        }
+
+        header p {
+          font-size: 1.1rem;
+        }
+
+        .container {
+          padding: 1.5rem;
+          margin: 1.5rem;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <h1>Grammar Mastery</h1>
+      <p>Comprehensive guide to English grammar with interactive examples and exercises</p>
+    </header>
+
+    <div class="container">
+      <div class="grammar-card">
+        <h3><i class="fas fa-puzzle-piece"></i> Parts of Speech</h3>
+        <p>The building blocks of English language:</p>
+        <ul>
+          <li><strong>Nouns:</strong> Person, place, thing, or idea (e.g., student, city, happiness)</li>
+          <li><strong>Pronouns:</strong> Replaces a noun (e.g., he, she, they, it, someone)</li>
+          <li><strong>Verbs:</strong> Shows action or state of being (e.g., run, is, become, think)</li>
+          <li><strong>Adjectives:</strong> Describes a noun (e.g., big, blue, interesting)</li>
+          <li><strong>Adverbs:</strong> Describes a verb, adjective, or adverb (e.g., quickly, very, extremely)</li>
+          <li><strong>Prepositions:</strong> Shows relationship (e.g., in, on, under, between)</li>
+          <li><strong>Conjunctions:</strong> Connects words or groups (e.g., and, but, or, because)</li>
+          <li><strong>Interjections:</strong> Expresses emotion (e.g., wow!, oh!, oops!)</li>
+        </ul>
+
+        <div class="example-box">
+          <span class="label">Example Sentence:</span>
+          <p>"Wow! The quick brown fox jumps over the lazy dog."</p>
+          <p>This sentence contains all eight parts of speech.</p>
+        </div>
+      </div>
+
+      <div class="grammar-card">
+        <h3><i class="fas fa-layer-group"></i> Sentence Structure</h3>
+        <p>How words are organized to create meaning:</p>
+        <ul>
+          <li><strong>Simple Sentence:</strong> One independent clause (e.g., "She runs.")</li>
+          <li><strong>Compound Sentence:</strong> Two independent clauses joined by a conjunction (e.g., "She runs, and he walks.")</li>
+          <li><strong>Complex Sentence:</strong> One independent clause + one dependent clause (e.g., "She runs because she enjoys it.")</li>
+          <li><strong>Compound-Complex:</strong> Two independent clauses + one dependent clause (e.g., "She runs every morning, and he walks because he prefers it.")</li>
+        </ul>
+
+        <div class="example-box">
+          <span class="label">Sentence Analysis:</span>
+          <p><strong>"Although it was raining, we went for a walk, and we enjoyed it."</strong></p>
+          <p>This is a compound-complex sentence with:</p>
+          <ul>
+            <li>Dependent clause: "Although it was raining"</li>
+            <li>Independent clauses: "we went for a walk", "we enjoyed it"</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="grammar-card">
+        <h3><i class="fas fa-clock"></i> Tenses Overview</h3>
+        <p>How verbs indicate time:</p>
+        <ul>
+          <li><strong>Present:</strong> Current actions or general truths</li>
+          <li><strong>Past:</strong> Completed actions</li>
+          <li><strong>Future:</strong> Actions that will happen</li>
+        </ul>
+        <p>Each time frame has four aspects:</p>
+        <ol>
+          <li><strong>Simple:</strong> Basic form (e.g., "I eat")</li>
+          <li><strong>Continuous:</strong> Ongoing actions (e.g., "I am eating")</li>
+          <li><strong>Perfect:</strong> Completed actions (e.g., "I have eaten")</li>
+          <li><strong>Perfect Continuous:</strong> Duration of actions (e.g., "I have been eating")</li>
+        </ol>
+      </div>
+
+      <div class="grammar-card">
+        <h3><i class="fas fa-balance-scale"></i> Subject-Verb Agreement</h3>
+        <p>Verbs must match their subjects in number:</p>
+        <ul>
+          <li>Singular subjects take singular verbs ("The dog <strong>barks</strong>")</li>
+          <li>Plural subjects take plural verbs ("The dogs <strong>bark</strong>")</li>
+        </ul>
+        <p>Special cases:</p>
+        <ul>
+          <li>Collective nouns can be singular or plural ("The team <strong>is</strong> ready" vs. "The team <strong>are</strong> arguing")</li>
+          <li>Indefinite pronouns like "everyone" are singular ("Everyone <strong>has</strong> left")</li>
+          <li>"Either/or" and "neither/nor" follow the closest subject ("Neither the students nor the teacher <strong>knows</strong>")</li>
+        </ul>
+      </div>
+
+      <div class="grammar-card">
+        <h3><i class="fas fa-bookmark"></i> Articles</h3>
+        <p>Words that define a noun's specificity:</p>
+        <ul>
+          <li><strong>Indefinite Articles (a, an):</strong> Used with nonspecific nouns ("I need <strong>a</strong> pen")</li>
+          <li><strong>Definite Article (the):</strong> Used with specific nouns ("Pass me <strong>the</strong> salt")</li>
+        </ul>
+        <p>Rules:</p>
+        <ul>
+          <li>Use "a" before consonant sounds ("a university")</li>
+          <li>Use "an" before vowel sounds ("an hour")</li>
+          <li>No article with plural or uncountable general nouns ("I love <strong>dogs</strong>")</li>
+        </ul>
+      </div>
+
+      <div class="grammar-card">
+        <h3><i class="fas fa-sliders-h"></i> Modals</h3>
+        <p>Special verbs that express necessity, possibility, or ability:</p>
+        <div class="example-box">
+          <p><strong>Can/Could:</strong> Ability or possibility ("I can swim")</p>
+          <p><strong>May/Might:</strong> Possibility or permission ("It may rain")</p>
+          <p><strong>Must:</strong> Necessity or strong recommendation ("You must see this")</p>
+          <p><strong>Shall/Should:</strong> Suggestions or future ("Shall we go?")</p>
+          <p><strong>Will/Would:</strong> Future or hypotheticals ("I would go if I could")</p>
+        </div>
+        <p>Characteristics:</p>
+        <ul>
+          <li>No -s in third person ("She can swim")</li>
+          <li>No infinitive or participle forms</li>
+          <li>Followed by base verb ("She should go")</li>
+        </ul>
+      </div>
+
+      <div class="grammar-card">
+        <h3><i class="fas fa-code-branch"></i> Conditional Sentences</h3>
+        <p>If-then constructions for different scenarios:</p>
+        <table style="width: 100%; border-collapse: collapse; margin: 1rem 0">
+          <tr>
+            <th style="padding: 0.8rem; text-align: left; border-bottom: 1px solid #ddd">Type</th>
+            <th style="padding: 0.8rem; text-align: left; border-bottom: 1px solid #ddd">Structure</th>
+            <th style="padding: 0.8rem; text-align: left; border-bottom: 1px solid #ddd">Example</th>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #ddd">Zero</td>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #ddd">If + present, present</td>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #ddd">If you heat water, it boils.</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #ddd">First</td>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #ddd">If + present, will + base</td>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #ddd">If it rains, we'll stay home.</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #ddd">Second</td>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #ddd">If + past, would + base</td>
+            <td style="padding: 0.8rem; border-bottom: 1px solid #ddd">If I were rich, I'd travel.</td>
+          </tr>
+          <tr>
+            <td style="padding: 0.8rem">Third</td>
+            <td style="padding: 0.8rem">If + past perfect, would have + past part.</td>
+            <td style="padding: 0.8rem">If I had studied, I'd have passed.</td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="grammar-card">
+        <h3><i class="fas fa-exchange-alt"></i> Passive Voice</h3>
+        <p>When the subject receives the action:</p>
+        <ul>
+          <li><strong>Structure:</strong> Form of "be" + past participle</li>
+          <li><strong>Use:</strong> When the doer is unknown or unimportant</li>
+        </ul>
+        <div class="example-box">
+          <span class="label">Active vs Passive:</span>
+          <p><strong>Active:</strong> "The chef cooked the meal." (focus on chef)</p>
+          <p><strong>Passive:</strong> "The meal was cooked by the chef." (focus on meal)</p>
+        </div>
+        <p>Tense examples:</p>
+        <ul>
+          <li>Present: "The letter is written"</li>
+          <li>Past: "The letter was written"</li>
+          <li>Future: "The letter will be written"</li>
+          <li>Perfect: "The letter has been written"</li>
+        </ul>
+      </div>
+
+      <div class="interactive-quiz">
+        <h3><i class="fas fa-question-circle"></i> Grammar Quiz</h3>
+
+        <div class="quiz-question">
+          <p>1. Which sentence is in the passive voice?</p>
+          <div class="quiz-option" onclick="checkAnswer(1, this, 'b')">a) The cat chased the mouse.</div>
+          <div class="quiz-option" onclick="checkAnswer(1, this, 'b')">b) The mouse was chased by the cat.</div>
+          <div class="quiz-option" onclick="checkAnswer(1, this, 'b')">c) The cat is chasing the mouse.</div>
+          <div class="feedback correct">Correct! The passive voice focuses on the receiver of the action.</div>
+          <div class="feedback incorrect">Incorrect. Look for the form of "be" + past participle.</div>
+        </div>
+
+        <div class="quiz-question">
+          <p>2. Choose the correct verb: "Neither the teacher nor the students _____ happy."</p>
+          <div class="quiz-option" onclick="checkAnswer(2, this, 'a')">a) are</div>
+          <div class="quiz-option" onclick="checkAnswer(2, this, 'a')">b) is</div>
+          <div class="feedback correct">Correct! With "neither/nor," the verb agrees with the closest subject.</div>
+          <div class="feedback incorrect">Incorrect. Remember the subject-verb agreement rule for "neither/nor."</div>
+        </div>
+      </div>
+
+      <a href="index.html" class="btn"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    </div>
+
+    <div class="dark-mode-toggle">
+      <button class="toggle-btn" onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+      </button>
+    </div>
+
+    <script>
+      // Dark mode toggle
+      function toggleDarkMode() {
+        document.body.classList.toggle('dark-mode');
+        const icon = document.querySelector('.toggle-btn i');
+
+        if (document.body.classList.contains('dark-mode')) {
+          icon.classList.replace('fa-moon', 'fa-sun');
+          localStorage.setItem('darkMode', 'enabled');
+        } else {
+          icon.classList.replace('fa-sun', 'fa-moon');
+          localStorage.setItem('darkMode', 'disabled');
+        }
+      }
+
+      // Check for saved dark mode preference
+      if (localStorage.getItem('darkMode') === 'enabled') {
+        document.body.classList.add('dark-mode');
+        document.querySelector('.toggle-btn i').classList.replace('fa-moon', 'fa-sun');
+      }
+
+      // Quiz functionality
+      function checkAnswer(questionNum, element, correctOption) {
+        const options = element.parentElement.querySelectorAll('.quiz-option');
+        const feedbackCorrect = element.parentElement.querySelector('.feedback.correct');
+        const feedbackIncorrect = element.parentElement.querySelector('.feedback.incorrect');
+
+        // Reset all options
+        options.forEach((opt) => {
+          opt.classList.remove('correct', 'incorrect');
+        });
+
+        // Hide all feedback
+        feedbackCorrect.style.display = 'none';
+        feedbackIncorrect.style.display = 'none';
+
+        // Check answer
+        if (element.textContent.trim().startsWith(correctOption)) {
+          element.classList.add('correct');
+          feedbackCorrect.style.display = 'block';
+        } else {
+          element.classList.add('incorrect');
+          feedbackIncorrect.style.display = 'block';
+
+          // Show correct answer
+          options.forEach((opt) => {
+            if (opt.textContent.trim().startsWith(correctOption)) {
+              opt.classList.add('correct');
+            }
+          });
+        }
+      }
+
+      // Add animation to grammar cards
+      document.addEventListener('DOMContentLoaded', function () {
+        const cards = document.querySelectorAll('.grammar-card');
+        cards.forEach((card, index) => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          card.style.transition = `all 0.5s ease ${index * 0.1}s`;
+
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 100);
+        });
+      });
+    </script>
+  </body>
+</html>
